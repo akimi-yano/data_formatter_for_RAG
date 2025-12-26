@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-multipart
+python-docx
+python-pptx
+pypdf
+reportlab
+markdown
+anthropic
+python-dotenv
