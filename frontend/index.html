@@ -75,6 +75,10 @@
                 }
             };
 
+            // Configuration: Set this to your backend URL in production
+            // Example: const API_BASE_URL = "https://your-app-name.onrender.com";
+            const API_BASE_URL = "http://localhost:8000"; 
+            
             const handleUpload = async () => {
                 if (files.length === 0) return;
                 setIsLoading(true);
@@ -85,8 +89,7 @@
                 });
 
                 try {
-                    // Assuming Backend is running on same host:8000 or proxy
-                    const response = await fetch("http://localhost:8000/upload", {
+                    const response = await fetch(`${API_BASE_URL}/upload`, {
                         method: "POST",
                         body: formData
                     });
@@ -97,7 +100,7 @@
                     setResults(data.results);
                 } catch (error) {
                     console.error("Error:", error);
-                    alert("Error uploading files. Ensure backend is running.");
+                    alert("Error uploading files. Ensure backend is running and API_BASE_URL is correct.");
                 } finally {
                     setIsLoading(false);
                 }
